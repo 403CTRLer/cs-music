@@ -286,9 +286,9 @@ class Music(commands.Cog):
     @commands.command(name='join', invoke_without_subcommand=True)
     async def _join(self, ctx: commands.Context):
         """Joins a voice channel."""
-        
+
         destination = ctx.author.voice.channel
-        
+
         if ctx.voice_state.voice:
             await ctx.voice_state.voice.move_to(destination)
             return
@@ -506,6 +506,7 @@ bot.add_cog(Music(bot))
 
 @bot.event
 async def on_ready():
+    discord.opus.load_opus("opus")
     print('Logged in as:\n{0.user.name}\n{0.user.id}'.format(bot))
 
 bot.run('NzU5NzQ1NDY1NjkxNDA2MzQ3.X3B-Gg.3x_Cn74zYl_UBRykurwB5sclc-s')
